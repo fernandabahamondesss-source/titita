@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>feliz aniversario mi amor - 2 años</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cherry: '#8b0000',
+                        'cherry-bright': '#a31d1d',
+                        'cherry-dark': '#5a0000',
+                        cream: '#faf6f0',
+                        'cream-card': '#fffdf9',
+                        blush: '#f4c2c2',
+                        'blush-soft': '#fbe4e4',
+                        kraft: '#e3d3c1',
+                    },
+                    fontFamily: {
+                        dancing: ['"Dancing Script"', 'cursive'],
+                        caveat: ['"Caveat"', 'cursive'],
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* strict lowercase enforce for layout */
+        body {
+            background-color: #faf6f0;
+            background-image: 
+                radial-gradient(#e5d9cc 1px, transparent 1px),
+                radial-gradient(#e5d9cc 1px, #faf6f0 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            color: #3b2a2a;
+            overflow-x: hidden;
+            text-transform: lowercase;
+        }
+
+        /* gingham ribbon pattern */
+        .gingham-pattern {
+            background-color: #ffffff;
+            background-image: 
+                linear-gradient(90deg, rgba(163, 29, 29, 0.2) 50%, transparent 50%),
+                linear-gradient(rgba(163, 29, 29, 0.2) 50%, transparent 50%);
+            background-size: 16px 16px;
+        }
+
+        /* postage stamp border effect */
+        .postage-stamp {
+            position: relative;
+            background: #fffdf9;
+            box-shadow: 0 10px 25px -5px rgba(139, 0, 0, 0.12);
+            border: 8px solid #faf6f0;
+            outline: 2px dashed #8b0000;
+        }
+
+        /* washi tape decoration */
+        .washi-tape {
+            position: absolute;
+            height: 24px;
+            width: 100px;
+            background: rgba(244, 194, 194, 0.85);
+            backdrop-filter: blur(2px);
+            border: 1px dashed rgba(139, 0, 0, 0.3);
+            transform: rotate(-3deg);
+            z-index: 10;
+        }
+
+        /* gentle floating floating elements */
+        @keyframes gentleFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(2deg); }
+        }
+
+        .floating-element {
+            animation: gentleFloat 4s ease-in-out infinite;
+        }
+
+        .floating-element-delayed {
+            animation: gentleFloat 5s ease-in-out 1.5s infinite;
+        }
+
+        /* smooth reveal transition */
+        .reveal-section {
+            transition: all 0.8s ease-out;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased min-h-screen flex flex-col justify-between relative selection:bg-cherry selection:text-white lowercase">
+
+    <!-- background vector stickers (no emojis) -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-30">
+        <!-- kiss mark svg top left -->
+        <div class="absolute top-8 left-6 floating-element text-cherry">
+            <svg class="w-14 h-14" viewBox="0 0 100 100" fill="currentColor">
+                <path d="M50 35c-12-8-25-6-35 2-6 5-10 12-8 18 2 5 8 7 15 5 10-3 20-10 28-10s18 7 28 10c7 2 13 0 15-5 2-6-2-13-8-18-10-8-23-10-35-2zm-30 28c8 6 18 10 30 10s22-4 30-10c4-3 5-7 2-10-3-3-8-2-13 1-6 4-13 6-19 6s-13-2-19-6c-5-3-10-4-13-1-3 3-2 7 2 10z"/>
+            </svg>
+        </div>
+        
+        <!-- stitched star top right -->
+        <div class="absolute top-12 right-10 floating-element-delayed text-cherry">
+            <svg class="w-14 h-14" viewBox="0 0 100 100" fill="currentColor">
+                <polygon points="50,5 64,36 98,36 70,57 81,91 50,70 19,91 30,57 2,36 36,36" />
+                <polygon points="50,15 60,38 84,38 64,53 72,78 50,62 28,78 36,53 16,38 40,38" fill="none" stroke="#faf6f0" stroke-width="2" stroke-dasharray="4,3"/>
+            </svg>
+        </div>
+
+        <!-- heart stamp bottom left -->
+        <div class="absolute bottom-16 left-8 floating-element transform -rotate-12">
+            <div class="w-20 h-24 postage-stamp flex flex-col items-center justify-center p-1 bg-cream-card">
+                <div class="text-[10px] font-serif text-cherry font-bold tracking-widest lowercase">aniversario</div>
+                <svg class="w-8 h-8 text-cherry my-1" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+                <div class="text-[9px] text-gray-500 font-mono">2024-2026</div>
+            </div>
+        </div>
+
+        <!-- double cherries vector bottom right -->
+        <div class="absolute bottom-24 right-12 floating-element text-cherry">
+            <svg class="w-12 h-12" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.5 3c-1.9 0-3.5 1.4-3.9 3.2L12 4.5 9.4 6.2C9 4.4 7.4 3 5.5 3 3.3 3 1.5 4.8 1.5 7c0 2.2 1.8 4 4 4 1.7 0 3.1-1 3.7-2.5l2.8-1.8 2.8 1.8c.6 1.5 2 2.5 3.7 2.5 2.2 0 4-1.8 4-4 0-2.2-1.8-4-4-4z"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- music player bar (no emojis) -->
+    <header class="relative z-30 pt-6 px-4 max-w-4xl mx-auto w-full">
+        <div class="flex items-center justify-between bg-cream-card/90 backdrop-blur-md border-2 border-cherry/20 rounded-full px-5 py-2.5 shadow-md">
+            <div class="flex items-center space-x-3">
+                <svg class="w-5 h-5 text-cherry animate-pulse" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                </svg>
+                <div>
+                    <p class="text-[11px] font-bold text-cherry lowercase tracking-wider">nuestra melodía</p>
+                    <p class="text-xs font-semibold text-gray-800 lowercase" id="song-title">canción de 2° aniversario</p>
+                </div>
+            </div>
+            <button id="music-btn" onclick="toggleAudio()" class="flex items-center space-x-2 bg-cherry hover:bg-cherry-bright text-white text-xs px-4 py-2 rounded-full transition-all shadow-sm active:scale-95 lowercase">
+                <span id="music-icon" class="text-[10px]">►</span>
+                <span id="music-text">reproducir</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- main container -->
+    <main class="relative z-10 flex-grow max-w-4xl mx-auto w-full px-4 py-8 space-y-12">
+
+        <!-- header section: title and subtitle -->
+        <section class="text-center space-y-4 relative">
+            <div class="inline-flex items-center space-x-2 bg-cherry text-white px-5 py-1.5 rounded-full text-xs font-bold tracking-widest shadow-md transform -rotate-1 lowercase">
+                <span>celebrando 2 años juntas</span>
+            </div>
+
+            <!-- main heading requested -->
+            <h1 class="font-dancing text-5xl md:text-7xl font-bold text-cherry drop-shadow-sm leading-tight lowercase">
+                feliz aniversario mi amor
+            </h1>
+
+            <p class="font-caveat text-2xl md:text-3xl text-gray-700 max-w-2xl mx-auto lowercase">
+                2 años llenos de risas, viajes inolvidables y un amor que crece cada día.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-3 pt-2 font-mono text-xs text-cherry-dark lowercase">
+                <span class="bg-blush-soft border border-cherry/20 px-3 py-1 rounded-lg">730 días</span>
+                <span class="bg-blush-soft border border-cherry/20 px-3 py-1 rounded-lg">17.520 horas</span>
+                <span class="bg-blush-soft border border-cherry/20 px-3 py-1 rounded-lg">infinitos recuerdos</span>
+            </div>
+        </section>
+
+        <!-- proposal section: question & dodging no button -->
+        <section id="proposal-section" class="relative max-w-xl mx-auto">
+            <div class="postage-stamp rounded-3xl p-6 sm:p-10 text-center space-y-6 shadow-xl relative overflow-hidden bg-cream-card">
+                
+                <div class="absolute top-0 left-0 right-0 h-4 gingham-pattern border-b border-cherry/20"></div>
+
+                <div class="relative inline-block">
+                    <div class="w-16 h-16 bg-cherry rounded-full flex items-center justify-center text-white shadow-lg mx-auto border-4 border-cream">
+                        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <span class="text-xs tracking-widest font-bold text-cherry/80 lowercase">renovación de amor</span>
+                    
+                    <!-- required question -->
+                    <h2 class="font-dancing text-4xl sm:text-5xl font-bold text-cherry leading-snug lowercase">
+                        quieres pololear conmigo?
+                    </h2>
+                    
+                    <p class="font-serif italic text-sm text-gray-600 lowercase">
+                        (para que cumplamos 2 años eternamente uwu)
+                    </p>
+                </div>
+
+                <!-- interactive buttons -->
+                <div id="button-container" class="relative min-h-[120px] flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                    <!-- yes button -->
+                    <button id="yes-btn" onclick="handleYesClick()" class="z-20 bg-cherry hover:bg-cherry-bright text-white font-bold text-lg sm:text-xl px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center justify-center space-x-2 border-2 border-white lowercase">
+                        <span>sí</span>
+                    </button>
+
+                    <!-- no button (dodges / shows error text) -->
+                    <button id="no-btn" onmouseover="dodgeNoButton()" onclick="handleNoClick(event)" class="z-20 bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold text-base px-6 py-3 rounded-xl transition-all duration-200 border border-gray-300 flex items-center justify-center space-x-1 shadow-sm lowercase">
+                        <span>no</span>
+                    </button>
+                </div>
+
+                <div class="pt-2 flex items-center justify-between text-xs text-gray-400 border-t border-dashed border-gray-200 lowercase">
+                    <span>sello de amor eterno</span>
+                    <span>03/09/2026</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- revealed section: dedication letter & photo gallery -->
+        <section id="reveal-content" class="hidden reveal-section space-y-16">
+
+            <!-- celebration banner -->
+            <div class="bg-gradient-to-r from-cherry-dark via-cherry to-cherry-dark text-white rounded-3xl p-8 text-center shadow-2xl relative overflow-hidden transform transition-all duration-700">
+                <div class="inline-block bg-white/20 backdrop-blur-md px-4 py-1 rounded-full text-xs font-semibold tracking-widest mb-3 lowercase">
+                    dijo que sí
+                </div>
+                
+                <h3 class="font-dancing text-4xl sm:text-6xl font-bold mb-4 lowercase">
+                    promesa renovada con éxito
+                </h3>
+                <p class="font-caveat text-2xl text-blush-soft max-w-xl mx-auto lowercase">
+                    gracias por elegirme cada día. eres el amor de mi vida entera.
+                </p>
+            </div>
+
+            <!-- dedication letter -->
+            <article class="bg-cream-card rounded-3xl p-8 sm:p-12 shadow-xl border-2 border-cherry/20 relative space-y-6">
+                <div class="washi-tape top-4 left-6"></div>
+                <div class="washi-tape top-4 right-6 transform rotate-6"></div>
+
+                <div class="text-center space-y-2 pt-4">
+                    <span class="text-xs tracking-widest font-bold text-cherry lowercase">te amo</span>
+                    <h2 class="font-dancing text-4xl sm:text-5xl font-bold text-cherry lowercase">
+                        para el amor de mi vida
+                    </h2>
+                </div>
+
+                <!-- exact dedication text in lowercase -->
+                <div class="prose prose-lg max-w-none font-serif text-gray-800 space-y-4 leading-relaxed text-base sm:text-lg lowercase">
+                    <p>
+                        feliz aniversario mi amor. hoy cumplimos 2 años juntas y no puedo estar más feliz de compartir mi vida contigo. gracias por cada risa, cada abrazo, cada viaje y por ser mi compañera favorita en el mundo entero. eres el amor de mi vida y me hace muy feliz renovar nuestro amor hoy y todos los días. te amo con todo mi corazón por siempre.
+                    </p>
+                </div>
+
+                <div class="pt-6 border-t border-dashed border-cherry/20 flex flex-col sm:flex-row justify-between items-center text-sm font-caveat text-2xl text-cherry font-bold lowercase">
+                    <span>con todo mi amor eterno,</span>
+                    <span class="text-cherry-dark">tu amor de la vida</span>
+                </div>
+            </article>
+
+            <!-- scrapbook photo gallery -->
+            <section class="space-y-8">
+                <div class="text-center space-y-2">
+                    <div class="inline-flex items-center space-x-2 bg-blush-soft text-cherry px-4 py-1 rounded-full text-xs font-bold tracking-wider lowercase">
+                        <span>álbum de recuerdos scrapbook</span>
+                    </div>
+                    <h2 class="font-dancing text-4xl sm:text-5xl font-bold text-cherry lowercase">
+                        nuestras fotos favoritas
+                    </h2>
+                    <p class="font-caveat text-2xl text-gray-600 lowercase">
+                        cada fotografía guarda un pedacito inolvidable de nuestros 2 años juntas.
+                    </p>
+                </div>
+
+                <!-- polaroids grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-4">
+                    
+                    <!-- photo 1: image_2.png -->
+                    <div class="polaroid-card group bg-white p-4 pb-6 shadow-md rounded-sm border border-gray-200 transform -rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-300 relative cursor-pointer" onclick="openModal('image_2.png', 'noche en porto')">
+                        <div class="washi-tape -top-3 left-1/3"></div>
+                        <div class="aspect-[3/4] bg-gray-100 overflow-hidden relative rounded-xs mb-3">
+                            <img src="image_2.png" alt="noche en porto" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/600x800/8b0000/fff?text=noche+en+porto';">
+                            <div class="absolute bottom-2 right-2 bg-cherry/80 text-white text-[10px] px-2 py-0.5 rounded-full font-mono">01/07</div>
+                        </div>
+                        <p class="font-caveat text-2xl text-center text-gray-800 leading-tight lowercase">
+                            noche en porto
+                        </p>
+                    </div>
+
+                    <!-- photo 2: image_3.png -->
+                    <div class="polaroid-card group bg-white p-4 pb-6 shadow-md rounded-sm border border-gray-200 transform rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-300 relative cursor-pointer" onclick="openModal('image_3.png', 'salamanca')">
+                        <div class="washi-tape -top-3 right-10"></div>
+                        <div class="aspect-[3/4] bg-gray-100 overflow-hidden relative rounded-xs mb-3">
+                            <img src="image_3.png" alt="salamanca" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/600x800/8b0000/fff?text=salamanca';">
+                            <div class="absolute bottom-2 right-2 bg-cherry/80 text-white text-[10px] px-2 py-0.5 rounded-full font-mono">02/07</div>
+                        </div>
+                        <p class="font-caveat text-2xl text-center text-gray-800 leading-tight lowercase">
+                            salamanca
+                        </p>
+                    </div>
+
+                    <!-- photo 3: image_4.png -->
+                    <div class="polaroid-card group bg-white p-4 pb-6 shadow-md rounded-sm border border-gray-200 transform -rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-300 relative cursor-pointer" onclick="openModal('image_4.png', 'foto cabina 3 de septiembre 2025')">
+                        <div class="washi-tape -top-3 left-6"></div>
+                        <div class="aspect-[3/4] bg-gray-100 overflow-hidden relative rounded-xs mb-3">
+                            <img src="image_4.png" alt="foto cabina 3 de septiembre 2025" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/600x800/8b0000/fff?text=foto+cabina';">
+                            <div class="absolute bottom-2 right-2 bg-cherry/80 text-white text-[10px] px-2 py-0.5 rounded-full font-mono">03/07</div>
+                        </div>
+                        <p class="font-caveat text-2xl text-center text-gray-800 leading-tight lowercase">
+                            foto cabina 3 de septiembre 2025
+                        </p>
+                    </div>
+
+                    <!-- photo 4: image_5.png -->
+                    <div class="polaroid-card group bg-white p-4 pb-6 shadow-md rounded-sm border border-gray-200 transform rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-300 relative cursor-pointer" onclick="openModal('image_5.png', 'un besito suave')">
+                        <div class="washi-tape -top-3 right-1/4"></div>
+                        <div class="aspect-[3/4] bg-gray-100 overflow-hidden relative rounded-xs mb-3">
+                            <img src="image_5.png" alt="un besito suave" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/600x800/8b0000/fff?text=un+besito+suave';">
+                            <div class="absolute bottom-2 right-2 bg-cherry/80 text-white text-[10px] px-2 py-0.5 rounded-full font-mono">04/07</div>
+                        </div>
+                        <p class="font-caveat text-2xl text-center text-gray-800 leading-tight lowercase">
+                            uwu
+                        </p>
+                    </div>
+
+                    <!-- photo 5: image_6.png -->
+                    <div class="polaroid-card group bg-white p-4 pb-6 shadow-md rounded-sm border border-gray-200 transform -rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-300 relative cursor-pointer" onclick="openModal('image_6.png', 'flores y sonrisas')">
+                        <div class="washi-tape -top-3 left-10"></div>
+                        <div class="aspect-[3/4] bg-gray-100 overflow-hidden relative rounded-xs mb-3">
+                            <img src="image_6.png" alt="flores y sonrisas" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/600x800/8b0000/fff?text=flores+y+sonrisas';">
+                            <div class="absolute bottom-2 right-2 bg-cherry/80 text-white text-[10px] px-2 py-0.5 rounded-full font-mono">05/07</div>
+                        </div>
+                        <p class="font-caveat text-2xl text-center text-gray-800 leading-tight lowercase">
+                            te amo
+                        </p>
+                    </div>
+
+                    <!-- photo 6: image_7.png -->
+                    <div class="polaroid-card group bg-white p-4 pb-6 shadow-md rounded-sm border border-gray-200 transform rotate-4 hover:rotate-0 hover:scale-105 transition-all duration-300 relative cursor-pointer" onclick="openModal('image_7.png', 'con nuestro gatito en la cama')">
+                        <div class="washi-tape -top-3 right-8"></div>
+                        <div class="aspect-[3/4] bg-gray-100 overflow-hidden relative rounded-xs mb-3">
+                            <img src="image_7.png" alt="con nuestro gatito en la cama" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/600x800/8b0000/fff?text=con+nuestro+gatito';">
+                            <div class="absolute bottom-2 right-2 bg-cherry/80 text-white text-[10px] px-2 py-0.5 rounded-full font-mono">06/07</div>
+                        </div>
+                        <p class="font-caveat text-2xl text-center text-gray-800 leading-tight lowercase">
+                            te amo titita
+                        </p>
+                    </div>
+
+                    <!-- photo 7: image_8.png -->
+                    <div class="polaroid-card group bg-white p-4 pb-6 shadow-md rounded-sm border border-gray-200 transform -rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-300 relative cursor-pointer md:col-span-2 lg:col-span-1 lg:col-start-2" onclick="openModal('image_8.png', 'tú y yo para siempre')">
+                        <div class="washi-tape -top-3 left-1/3"></div>
+                        <div class="aspect-[3/4] bg-gray-100 overflow-hidden relative rounded-xs mb-3">
+                            <img src="image_8.png" alt="tú y yo para siempre" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/600x800/8b0000/fff?text=tu+y+yo+para+siempre';">
+                            <div class="absolute bottom-2 right-2 bg-cherry/80 text-white text-[10px] px-2 py-0.5 rounded-full font-mono">07/07</div>
+                        </div>
+                        <p class="font-caveat text-2xl text-center text-gray-800 leading-tight lowercase">
+                            tú y yo para siempre
+                        </p>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- reasons generator -->
+            <section class="bg-blush-soft/60 rounded-3xl p-8 border border-cherry/20 text-center space-y-4">
+                <h3 class="font-dancing text-3xl sm:text-4xl font-bold text-cherry lowercase">
+                    por qué te amo tanto?
+                </h3>
+                <p id="reason-text" class="font-caveat text-2xl text-gray-800 min-h-[60px] flex items-center justify-center italic lowercase">
+                    "haz clic abajo para descubrir una razón de mi amor por ti..."
+                </p>
+                <button onclick="generateLoveReason()" class="bg-cherry hover:bg-cherry-bright text-white text-sm font-bold px-6 py-2.5 rounded-full shadow-md transition-transform active:scale-95 lowercase">
+                    descubrir razón
+                </button>
+            </section>
+        </section>
+
+    </main>
+
+    <!-- footer -->
+    <footer class="relative z-10 text-center py-6 border-t border-cherry/10 text-xs text-cherry-dark/70 font-mono lowercase">
+        <p>hecho con todo el amor del universo para ti | aniversario 2</p>
+    </footer>
+
+    <!-- toast message for no button click -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-cherry text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center space-x-3 transform translate-y-32 opacity-0 pointer-events-none border-2 border-white max-w-sm">
+        <svg class="w-6 h-6 flex-shrink-0 text-white" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        <div>
+            <!-- required error text -->
+            <p id="toast-message" class="text-xs font-semibold lowercase">
+                respuesta incorrecta. soy el amor de tu vida. intenta otra vez
+            </p>
+        </div>
+    </div>
+
+    <!-- lightbox modal -->
+    <div id="photo-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300" onclick="closeModal()">
+        <div class="relative bg-white p-4 sm:p-6 rounded-2xl max-w-lg w-full shadow-2xl transform scale-90 transition-transform duration-300" onclick="event.stopPropagation()">
+            <button onclick="closeModal()" class="absolute -top-3 -right-3 bg-cherry text-white w-8 h-8 rounded-full font-bold shadow-lg flex items-center justify-center text-sm hover:bg-cherry-dark lowercase">✕</button>
+            <div class="aspect-[3/4] overflow-hidden rounded-lg mb-4 bg-gray-100">
+                <img id="modal-img" src="" alt="ampliada" class="w-full h-full object-cover">
+            </div>
+            <p id="modal-caption" class="font-caveat text-2xl text-center text-cherry font-bold lowercase"></p>
+        </div>
+    </div>
+
+    <!-- javascript logic -->
+    <script>
+        let dodgeCount = 0;
+
+        function dodgeNoButton() {
+            const noBtn = document.getElementById('no-btn');
+            const randomX = (Math.random() - 0.5) * 200;
+            const randomY = (Math.random() - 0.5) * 100;
+            noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        }
+
+        function handleNoClick(e) {
+            e.preventDefault();
+            dodgeNoButton();
+            
+            dodgeCount++;
+            const yesBtn = document.getElementById('yes-btn');
+            const newScale = 1 + (dodgeCount * 0.15);
+            yesBtn.style.transform = `scale(${newScale})`;
+            
+            // strictly requested error message in lowercase
+            showToast("respuesta incorrecta. soy el amor de tu vida. intenta otra vez");
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            toastMessage.textContent = msg.toLowerCase();
+
+            toast.classList.remove('translate-y-32', 'opacity-0', 'pointer-events-none');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-32', 'opacity-0', 'pointer-events-none');
+            }, 3500);
+        }
+
+        function handleYesClick() {
+            // confetti star/heart explosion (no emojis)
+            const count = 200;
+            const defaults = { origin: { y: 0.7 } };
+
+            function fire(particleRatio, opts) {
+                confetti(Object.assign({}, defaults, opts, {
+                    particleCount: Math.floor(count * particleRatio),
+                    colors: ['#8b0000', '#a31d1d', '#f4c2c2', '#faf6f0', '#e3d3c1']
+                }));
+            }
+
+            fire(0.25, { spread: 26, startVelocity: 55 });
+            fire(0.2, { spread: 60 });
+            fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
+            fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
+            fire(0.1, { spread: 120, startVelocity: 45 });
+
+            const revealContent = document.getElementById('reveal-content');
+            revealContent.classList.remove('hidden');
+            
+            setTimeout(() => {
+                revealContent.scrollIntoView({ behavior: 'smooth' });
+            }, 300);
+
+            playRomanticTone();
+        }
+
+        function openModal(imgSrc, caption) {
+            const modal = document.getElementById('photo-modal');
+            const modalImg = document.getElementById('modal-img');
+            const modalCaption = document.getElementById('modal-caption');
+
+            modalImg.src = imgSrc;
+            modalCaption.textContent = caption.toLowerCase();
+
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.querySelector('div').classList.remove('scale-90');
+            modal.querySelector('div').classList.add('scale-100');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('photo-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modal.querySelector('div').classList.remove('scale-100');
+            modal.querySelector('div').classList.add('scale-90');
+        }
+
+        const loveReasons = [
+            "por la forma en que me miras cuando te sonrío.",
+            "por nuestras risas espontáneas e interminables.",
+            "por nuestras mañanas regaloneando en la cama con nuestro gatito.",
+            "por hacer de cada viaje y paseo una aventura mágica.",
+            "por tu ternura, tus abrazos reconfortantes y tus besitos suaves.",
+            "por ser mi lugar seguro en el mundo.",
+            "por apoyarme siempre y celebrar cada logro juntas.",
+            "por ser simplemente tú, la persona más maravillosa del planeta."
+        ];
+
+        function generateLoveReason() {
+            const reasonText = document.getElementById('reason-text');
+            const randomReason = loveReasons[Math.floor(Math.random() * loveReasons.length)];
+            
+            reasonText.style.opacity = 0;
+            setTimeout(() => {
+                reasonText.textContent = `"${randomReason}"`;
+                reasonText.style.opacity = 1;
+            }, 200);
+        }
+
+        // Web Audio Synth
+        let audioCtx = null;
+        let isPlaying = false;
+        let intervalId = null;
+
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+
+        function playNote(freq, duration = 1.5) {
+            if (!audioCtx) return;
+            try {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+                gain.gain.setValueAtTime(0.01, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.1, audioCtx.currentTime + 0.2);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            } catch(e) {}
+        }
+
+        function playRomanticSequence() {
+            const notes = [
+                [261.63, 329.63, 392.00, 493.88],
+                [220.00, 261.63, 329.63, 392.00],
+                [174.61, 220.00, 261.63, 349.23],
+                [196.00, 246.94, 293.66, 349.23]
+            ];
+            
+            let step = 0;
+            intervalId = setInterval(() => {
+                const chord = notes[step % notes.length];
+                chord.forEach((freq, idx) => {
+                    setTimeout(() => playNote(freq, 2.0), idx * 220);
+                });
+                step++;
+            }, 2500);
+        }
+
+        function playRomanticTone() {
+            initAudio();
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            playNote(523.25, 2.0);
+            setTimeout(() => playNote(659.25, 2.0), 300);
+        }
+
+        function toggleAudio() {
+            initAudio();
+            const icon = document.getElementById('music-icon');
+            const text = document.getElementById('music-text');
+
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            if (!isPlaying) {
+                isPlaying = true;
+                icon.textContent = "❚❚";
+                text.textContent = "pausar";
+                playRomanticSequence();
+            } else {
+                isPlaying = false;
+                icon.textContent = "►";
+                text.textContent = "reproducir";
+                if (intervalId) clearInterval(intervalId);
+            }
+        }
+    </script>
+</body>
+</html>
